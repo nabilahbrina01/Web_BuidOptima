@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `devices` ADD COLUMN `device_type` VARCHAR(30) NOT NULL DEFAULT 'AC',
+    ADD COLUMN `power_watt` INTEGER NOT NULL DEFAULT 0;

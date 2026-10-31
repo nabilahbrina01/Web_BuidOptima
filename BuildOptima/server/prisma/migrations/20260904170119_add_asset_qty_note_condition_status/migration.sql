@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE `assets` ADD COLUMN `condition_status` VARCHAR(30) NOT NULL DEFAULT 'Baik',
+    ADD COLUMN `note` VARCHAR(255) NULL,
+    ADD COLUMN `qty` INTEGER NOT NULL DEFAULT 1;
