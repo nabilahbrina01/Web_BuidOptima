@@ -30,7 +30,7 @@ const register = async ({ username, email, password, name, nip }) => {
 
   const hashed = await bcrypt.hash(password, SALT_ROUNDS);
   const otp    = generateOtp();
-  const otpExp = dayjs().add(10, 'minute').toDate();
+  const otpExp = dayjs().add(3, 'minute').toDate();
   const profile = { name: (name && String(name).trim()) || username, nip: nip || null };
 
   const user = retry
@@ -75,7 +75,7 @@ const resendOtp = async ({ email }) => {
   if (!user) return; // jangan bocorkan apakah email terdaftar
 
   const otp    = generateOtp();
-  const otpExp = dayjs().add(10, 'minute').toDate();
+  const otpExp = dayjs().add(3, 'minute').toDate();
   await prisma.user.update({ where: { id: user.id }, data: { otp_code: otp, otp_expired: otpExp } });
   await mailer.sendOtp(email, otp);
 };
@@ -124,7 +124,7 @@ const forgotPassword = async ({ email }) => {
   if (!user) return;
 
   const otp    = generateOtp();
-  const otpExp = dayjs().add(10, 'minute').toDate();
+  const otpExp = dayjs().add(3, 'minute').toDate();
 
   await prisma.user.update({
     where: { id: user.id },

@@ -21,9 +21,9 @@ const num = (v, fallback) => {
 
 const WINDOW_MS = num(process.env.RATE_LIMIT_WINDOW_MIN, 15) * 60 * 1000;
 const MAX_API   = num(process.env.RATE_LIMIT_MAX, 2000);
-const MAX_LOGIN = num(process.env.AUTH_RATE_LIMIT_MAX, 8);
-const MAX_OTP   = num(process.env.OTP_RATE_LIMIT_MAX, 5);
-const MAX_SEND  = num(process.env.OTP_SEND_RATE_LIMIT_MAX, 5);
+const MAX_LOGIN = num(process.env.AUTH_RATE_LIMIT_MAX, 3);
+const MAX_OTP   = num(process.env.OTP_RATE_LIMIT_MAX, 3);
+const MAX_SEND  = num(process.env.OTP_SEND_RATE_LIMIT_MAX, 3);
 
 const ipOf = (req) => (rateLimit.ipKeyGenerator ? rateLimit.ipKeyGenerator(req.ip) : req.ip);
 const emailOf = (req) => String(req.body?.email || '').trim().toLowerCase();
